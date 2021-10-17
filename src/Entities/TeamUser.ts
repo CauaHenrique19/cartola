@@ -4,8 +4,8 @@ export class TeamUser{
     public readonly id?: string
     public readonly user_id: string
     public name: string
-    public money: number
-    public readonly created_at: string
+    public money?: number
+    public readonly created_at: Date
 
     constructor(props: Omit<TeamUser, 'id'>, id?: string){
         Object.assign(this, props)
