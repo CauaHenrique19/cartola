@@ -1,7 +1,7 @@
-import { uuid } from "uuidv4"
+import { v4 as uuid } from 'uuid'
 
 export class User{
-    public id?: string
+    public readonly id?: string
     public email: string
     public password?: string
     public name: string
