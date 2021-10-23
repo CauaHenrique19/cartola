@@ -17,6 +17,15 @@ export class TeamRepository implements ITeamRepository{
         return teams
     }
 
+    async getById(id: string) : Promise<Team>{
+        const team = await knex('teams')
+            .select('*')
+            .where({ id })
+            .first()
+
+        return team
+    }
+
     async update(team: Team) : Promise<Team>{
         const [updatedTeam] = await knex('teams')
             .update(team, '*')

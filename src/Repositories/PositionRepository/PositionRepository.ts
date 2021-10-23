@@ -9,4 +9,13 @@ export class PositionRepository implements IPositionRepository{
 
         return returnedPosition
     }
+
+    async getById(id: string) : Promise<Position>{
+        const position = await knex('positions')
+            .select('*')
+            .where({ id })
+            .first()
+
+        return position
+    }
 }
