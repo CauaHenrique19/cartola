@@ -1,9 +1,9 @@
 import { TeamUser } from "../../Entities/TeamUser";
-import { TeamUserRepository } from "../../Repositories/TeamUserRepository/TeamUserRepository";
+import { ITeamUserRepository } from "../../Repositories/TeamUserRepository/ITeamUserRepository";
 import { ICreateTeamUserDTO } from "./ICreateTeamUserDTO";
 
 export class CreateTeamUserUseCase{
-    constructor(private teamUserRepository : TeamUserRepository){}
+    constructor(private teamUserRepository : ITeamUserRepository){}
 
     async execute(team: ICreateTeamUserDTO) : Promise<TeamUser>{
         const now = new Date()

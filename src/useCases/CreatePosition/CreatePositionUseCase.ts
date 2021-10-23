@@ -1,9 +1,9 @@
 import { Position } from "../../Entities/Position";
-import { PositionRepository } from "../../Repositories/PositionRepository/PositionRepository";
+import { IPositionRepository } from "../../Repositories/PositionRepository/IPositionRepository";
 import { ICreatePositionDTO } from "./ICreatePositionDTO";
 
 export class CreatePositionUseCase{
-    constructor(private positionRepository : PositionRepository){}
+    constructor(private positionRepository : IPositionRepository){}
 
     async execute(position: ICreatePositionDTO) : Promise<Position>{
         const positionEntity = new Position(position)

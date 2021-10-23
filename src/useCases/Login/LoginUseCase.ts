@@ -1,11 +1,11 @@
-import { UserRepository } from "../../Repositories/UserRepository/UserRepository";
+import { IUserRepository } from "../../Repositories/UserRepository/IUserRepository";
 import { ILoginDTO } from "./ILoginDTO";
 import { IAuthenticationUserDTO } from "../../DTO/IAuthenticationUserDTO";
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 export class LoginUseCase{
-    constructor(private userRepository : UserRepository){}
+    constructor(private userRepository : IUserRepository){}
 
     async execute(loginData : ILoginDTO) : Promise<IAuthenticationUserDTO> {
 

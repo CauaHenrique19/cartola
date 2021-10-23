@@ -1,12 +1,12 @@
 import { User } from "../../Entities/User";
-import { UserRepository } from "../../Repositories/UserRepository/UserRepository";
+import { IUserRepository } from "../../Repositories/UserRepository/IUserRepository";
 import { IAuthenticationUserDTO } from "../../DTO/IAuthenticationUserDTO";
 import { ICreateUserDTO } from "./ICreateUserDTO";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
 export class CreateUserUseCase{
-    constructor(private userRepository : UserRepository){}
+    constructor(private userRepository : IUserRepository){}
 
     async execute(user: ICreateUserDTO) : Promise<IAuthenticationUserDTO> {
         if(user.password !== user.confirmPassword) throw new Error('Senhas não conferem!')

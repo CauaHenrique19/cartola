@@ -1,13 +1,12 @@
 import { Team } from "../../Entities/Team";
-import { IFile } from "../../Providers/IFileUpload";
-import { AWSUploadProvider } from "../../Providers/Implementations/AWSUploadProvider";
-import { TeamRepository } from "../../Repositories/TeamRepository/TeamRepository";
+import { FileUploader, IFile } from "../../Providers/IFileUpload";
+import { ITeamRepository } from "../../Repositories/TeamRepository/ITeamRepository";
 import { ICreateTeamDTO } from "./ICreateTeamDTO";
 
 export class CreateTeamUseCase{
     constructor(
-        private teamRepository : TeamRepository, 
-        private awsUploadProvider : AWSUploadProvider
+        private teamRepository : ITeamRepository, 
+        private awsUploadProvider : FileUploader
     ){}
 
     async execute(team: ICreateTeamDTO, file: IFile) : Promise<Team>{

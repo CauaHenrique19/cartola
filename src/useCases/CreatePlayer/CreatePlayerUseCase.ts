@@ -1,14 +1,13 @@
 import { Player } from "../../Entities/Player";
 import { PlayerEnum } from "../../Enums/PlayerEnum";
-import { IFile } from "../../Providers/IFileUpload";
-import { AWSUploadProvider } from "../../Providers/Implementations/AWSUploadProvider";
-import { PlayerRepository } from "../../Repositories/PlayerRepository/PlayerRepository";
+import { IFile, FileUploader } from "../../Providers/IFileUpload";
+import { IPlayerRepository } from "../../Repositories/PlayerRepository/IPlayerRepository";
 import { ICreatePlayerDTO } from "./ICreatePlayerDTO";
 
 export class CreatePlayerUseCase{
     constructor(
-        private playerRepository : PlayerRepository, 
-        private awsUploadProvider : AWSUploadProvider
+        private playerRepository : IPlayerRepository, 
+        private awsUploadProvider : FileUploader
     ){}
 
     async execute(player: ICreatePlayerDTO, file: IFile) : Promise<Player>{
