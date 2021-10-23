@@ -9,4 +9,14 @@ export class PlayerRepository implements IPlayerRepository{
 
         return returnedPlayer
     }
+
+    async getAll() : Promise<Player[]>{
+        const players = await knex('players')
+            .select('players.*', 'teams.name as team_name', 'teams.url_image as team_url_image', 
+                'teams.abbreviation as team_abbreviation', 'positions.name as position_name', 'positions.abbreviation as position_abbreviation')
+            .join('teams', 'teams.id', 'players.team_id')
+            .join('positions', 'positions.id', 'players.position_id')
+
+        return players
+    }
 }

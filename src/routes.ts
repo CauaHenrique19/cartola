@@ -10,6 +10,7 @@ import { createTeamController } from './useCases/CreateTeam'
 import { createTeamUserController } from './useCases/CreateTeamUser'
 import { createPositionController } from './useCases/CreatePosition'
 import { createPlayerController } from './useCases/CreatePlayer'
+import { getAllPlayersController } from './useCases/GetAllPlayers'
 
 router.post('/signup', (req, res) => createUserController.handle(req, res))
 router.post('/login', (req, res) => loginController.handle(req, res))
@@ -21,5 +22,6 @@ router.post('/team-user', (req, res) => createTeamUserController.handle(req, res
 router.post('/position', (req, res) => createPositionController.handle(req, res))
 
 router.post('/player', upload.single('file'), (req, res) => createPlayerController.handle(req, res))
+router.get('/player', (req, res) => getAllPlayersController.handle(req, res))
 
 export { router }
