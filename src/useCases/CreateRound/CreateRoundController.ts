@@ -6,14 +6,14 @@ export class CreateRoundController{
     constructor(private createRoundUseCase: CreateRoundUseCase){}
 
     async handle(request: Request, response: Response){
-        const description : ICreateRoundDTO = request.body
+        const { description, started_at, end_at } : ICreateRoundDTO = request.body
 
         try{
-            const returnedRound = await this.createRoundUseCase.execute(description)
+            const returnedRound = await this.createRoundUseCase.execute({ description, started_at, end_at })
             response.json(returnedRound)
         }
         catch(error){
-            response.status(400).json({ message: 'Ocorreu um erro ao criar rodada!' })
+            response.status(400).json({ message: 'Ocorreu um erro ao criar rodada!', error: error.message })
         }
     }
 }

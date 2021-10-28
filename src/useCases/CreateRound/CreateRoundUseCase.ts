@@ -6,13 +6,14 @@ export class CreateRoundUseCase{
     constructor(private roundRepository : IRoundRepository){}
 
     async execute(round: ICreateRoundDTO) : Promise<Round>{
+
         const roundEntity = new Round({ 
             description: round.description, 
-            startedAt: new Date(), 
-            endAt: new Date() 
+            started_at: round.started_at, 
+            end_at: round.end_at 
         })
 
-        const returnedRound = this.roundRepository.save(roundEntity)
+        const returnedRound = await this.roundRepository.save(roundEntity)
         return returnedRound
     }
 }
