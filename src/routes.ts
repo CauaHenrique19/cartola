@@ -12,6 +12,7 @@ import { createPositionController } from './useCases/CreatePosition'
 import { createPlayerController } from './useCases/CreatePlayer'
 import { getAllPlayersController } from './useCases/GetAllPlayers'
 import { createRoundController } from './useCases/CreateRound'
+import { createLineupController } from './useCases/CreateLineup'
 
 router.post('/signup', (req, res) => createUserController.handle(req, res))
 router.post('/login', (req, res) => loginController.handle(req, res))
@@ -26,5 +27,7 @@ router.post('/player', upload.single('file'), (req, res) => createPlayerControll
 router.get('/player', (req, res) => getAllPlayersController.handle(req, res))
 
 router.post('/round', (req, res) => createRoundController.handle(req, res))
+
+router.post('/lineup', (req, res) => createLineupController.handle(req, res))
 
 export { router }

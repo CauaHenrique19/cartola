@@ -1,6 +1,8 @@
+import { v4 as uuid } from 'uuid'
+
 export class Lineup{
     public readonly id: string
-    public readonly teams_user_id: string
+    public readonly team_user_id: string
     public readonly round_id: string
     public price: Number
     public created_at: Date
@@ -9,7 +11,7 @@ export class Lineup{
         Object.assign(this, props)
 
         if(!id){
-            this.id = id
+            this.id = uuid()
         }
     }
 }
