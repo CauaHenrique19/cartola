@@ -6,10 +6,10 @@ export class CreateLineupController{
     constructor(private createLineupUseCase: CreateLineupUseCase){}
 
     async handle(request: Request, response: Response){
-        const { team_user_id, round_id, price } : ICreateLineupDTO = request.body
+        const { team_user_id, round_id, players } : ICreateLineupDTO = request.body
 
         try{
-            const lineup = await this.createLineupUseCase.execute({ team_user_id, round_id, price })
+            const lineup = await this.createLineupUseCase.execute({ team_user_id, round_id, players })
             response.json(lineup)
         }
         catch(error){
