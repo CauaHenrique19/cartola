@@ -14,6 +14,7 @@ import { getAllPlayersController } from './useCases/GetAllPlayers'
 import { createRoundController } from './useCases/CreateRound'
 import { createLineupController } from './useCases/CreateLineup'
 import { createPontuationController } from './useCases/CreatePontuation'
+import { createPontuationInPlayerController } from './useCases/CreatePontuationInPlayer'
 
 router.post('/signup', (req, res) => createUserController.handle(req, res))
 router.post('/login', (req, res) => loginController.handle(req, res))
@@ -32,5 +33,7 @@ router.post('/round', (req, res) => createRoundController.handle(req, res))
 router.post('/lineup', (req, res) => createLineupController.handle(req, res))
 
 router.post('/pontuation', (req, res) => createPontuationController.handle(req, res))
+
+router.post('/pontuation-in-player', (req, res) => createPontuationInPlayerController.handle(req, res))
 
 export { router }
